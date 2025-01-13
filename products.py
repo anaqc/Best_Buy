@@ -15,16 +15,19 @@ class Product:
 
 
     def get_quantity(self) -> float:
+        """ This function get the quantity from a product"""
         return float(self.quantity)
 
 
     def set_quantity(self, quantity):
+        """ This function update the quantity from a product"""
         self.quantity += quantity
         if self.quantity == 0:
             self.active = False
 
 
     def is_active(self) -> bool:
+        """ This function returns True if a product is activ or False if not"""
         if self.active:
             return True
         else:
@@ -32,20 +35,24 @@ class Product:
 
 
     def activate(self):
+        """ This function activate a product if is_activate = False"""
         self.active = True
 
 
     def deactivate(self):
+        """ This function deactivate the product"""
         self.active = False
 
 
     def show(self) -> str:
+        """ This function return a string with the product information"""
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
 
     def buy(self, quantity) -> float:
+        """ This function buy a product"""
         try:
-            if self.quantity > quantity:
+            if self.quantity > quantity and self.active:
                 self.quantity -= quantity
                 return self.price * quantity
             if self.quantity == quantity:

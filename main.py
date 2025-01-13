@@ -17,6 +17,7 @@ def list_products_store(store):
         print(f"{index}. {product.show()}")
     print("______________________")
 
+
 def show_total_amount(store):
     """ This function show total amount in store"""
     total_amount = 0

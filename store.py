@@ -1,9 +1,11 @@
 class Store:
     def __init__(self, list_products: list):
+        # Initialize instance variables
         self.list_products = list_products
 
 
     def add_product(self, product):
+        """ Thia function add a product to list_products"""
         self.list_products.append(product)
 
 
