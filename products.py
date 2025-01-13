@@ -55,3 +55,4 @@ class Product:
             raise ValueError("Insufficient quantity")
         except ValueError as e:
             print(e)
+            return 0
