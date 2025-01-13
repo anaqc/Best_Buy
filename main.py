@@ -38,7 +38,6 @@ def make_order(store):
             user_choice = input("Which product # do you want? ")
             user_quantity = input("What amount do you want? ")
             total_products = store.get_all_products()
-            total_payment = 0
             if (user_choice.isdigit() and 1 <= int(user_choice) <= len(total_products)
                     and user_quantity.isdigit()):
                 user_choice = int(user_choice)
@@ -47,14 +46,14 @@ def make_order(store):
                 list_order.append((product_user_choice, user_quantity))
                 print("Product added to list!")
                 continue
-            elif user_choice == "" and user_quantity == "" and verify_quantity(list_order):
+            if user_choice == "" and user_quantity == "" and verify_quantity(list_order):
                 for product, quantity in list_order:
                     product.buy(quantity)
                 print("______________________")
                 print(f"Order made! Total payment: {store.order(list_order)}")
                 print("______________________")
                 break
-            elif user_choice == "" and user_quantity == "" and not verify_quantity(list_order):
+            if user_choice == "" and user_quantity == "" and not verify_quantity(list_order):
                 print("Error while making order! Quantity larger than what exists")
                 break
             raise ValueError("Error adding product!")
@@ -77,9 +76,9 @@ def validate_user_input():
             user_input = int(user_input)
             if  1 <= user_input <= 4:
                 return user_input
-            raise ValueError("Error with your choice! Try again!")
+            raise ValueError("Error with your choice!")
         except Exception as e:
-            print(e)
+            print(f"{e} Try again!")
 
 def start(store):
     """ This function gek the store object as parameter and show the following menu"""
@@ -110,7 +109,7 @@ def start(store):
 
 
 def main():
-    # setup initial stock of inventory
+    """ setup initial stock of inventory"""
     product_list = [products.Product("MacBook Air M2", price=1450, quantity=100),
                     products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
                     products.Product("Google Pixel 7", price=500, quantity=250),

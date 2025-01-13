@@ -1,6 +1,6 @@
 class Product:
     def __init__(self, name: str, price: float, quantity: int):
-        # Validate inputs
+        """ Validate inputs """
         if not name:
             raise ValueError("Name cannot be empty")
         if price < 0:
@@ -28,10 +28,7 @@ class Product:
 
     def is_active(self) -> bool:
         """ This function returns True if a product is activ or False if not"""
-        if self.active:
-            return True
-        else:
-            return False
+        return self.active
 
 
     def activate(self):

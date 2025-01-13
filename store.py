@@ -1,6 +1,6 @@
 class Store:
     def __init__(self, list_products: list):
-        # Initialize instance variables
+        """ Initialize instance variables"""
         self.list_products = list_products
 
 
@@ -10,7 +10,7 @@ class Store:
 
 
     def remove_product(self, product):
-        # This function removes a product from store
+        """ This function removes a product from store"""
         try:
             if product in self.list_products:
                 self.list_products.remove(product)
@@ -20,12 +20,12 @@ class Store:
 
 
     def get_total_quantity(self) -> int:
-        # This function returns how many items are in the store in total
+        """ This function returns how many items are in the store in total"""
         return len(self.list_products)
 
 
     def get_all_products(self) -> list:
-        # This function return all products int the store that are activate
+        """ This function return all products int the store that are activate"""
         list_products_active = []
         for product in self.list_products:
             if product.active:
@@ -43,3 +43,4 @@ class Store:
         for product, quantity in shopping_list:
             total += product.price * quantity
         return total
+
