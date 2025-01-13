@@ -47,8 +47,6 @@ def make_order(store):
                 print("Product added to list!")
                 continue
             if user_choice == "" and user_quantity == "" and verify_quantity(list_order):
-                for product, quantity in list_order:
-                    product.buy(quantity)
                 print("______________________")
                 print(f"Order made! Total payment: {store.order(list_order)}")
                 print("______________________")
