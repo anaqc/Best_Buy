@@ -20,11 +20,8 @@ def list_products_store(store):
 
 def show_total_amount(store):
     """ This function show total amount in store"""
-    total_amount = 0
-    for product in store.list_products:
-        total_amount += product.quantity
     print("______________________")
-    print(f"Total of {total_amount} items in store")
+    print(f"Total of {store.get_total_quantity()} items in store")
     print("______________________")
 
 
@@ -42,7 +39,7 @@ def make_order(store):
                     and user_quantity.isdigit()):
                 user_choice = int(user_choice)
                 user_quantity = int(user_quantity)
-                product_user_choice = store.list_products[user_choice - 1]
+                product_user_choice = store.get_product_by_index(user_choice - 1)
                 list_order.append((product_user_choice, user_quantity))
                 print("Product added to list!")
                 continue
@@ -66,13 +63,13 @@ def verify_quantity(list_order) ->bool:
     return True
 
 
-def validate_user_input():
+def validate_user_input(dic_menu):
     """ This function validate the user input from the menu"""
     while True:
         user_input = input("Please choose a number: ")
         try:
             user_input = int(user_input)
-            if  1 <= user_input <= 4:
+            if  1 <= user_input <= len(dic_menu):
                 return user_input
             raise ValueError("Error with your choice!")
         except Exception as e:
@@ -100,7 +97,7 @@ def start(store):
     }
     while True:
         menu(dic_menu)
-        user_input = validate_user_input()
+        user_input = validate_user_input(dic_menu)
         if user_input == 4:
             dic_menu[user_input]["function"]()
         dic_menu[user_input]["function"](store)

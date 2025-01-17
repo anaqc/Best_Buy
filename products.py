@@ -21,7 +21,7 @@ class Product:
 
     def set_quantity(self, quantity):
         """ This function update the quantity from a product"""
-        self.quantity += quantity
+        self.quantity = quantity
         if self.quantity == 0:
             self.active = False
 

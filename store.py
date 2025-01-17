@@ -9,6 +9,18 @@ class Store:
         self.list_products.append(product)
 
 
+    def get_product_by_index(self, index):
+        """
+        Gets a product by its index in the store's product list.
+        Args:index (int): Index of the product
+        Returns: Product or None: The product at the given index, or None if not found
+        """
+        try:
+            return self.list_products[index]
+        except IndexError:
+            return None
+
+
     def remove_product(self, product):
         """ This function removes a product from store"""
         try:
@@ -20,8 +32,9 @@ class Store:
 
 
     def get_total_quantity(self) -> int:
-        """ This function returns how many items are in the store in total"""
-        return len(self.list_products)
+        """ This function returns a sum of quantities"""
+
+        return sum(product.quantity for product in self.list_products)
 
 
     def get_all_products(self) -> list:
